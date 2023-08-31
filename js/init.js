@@ -17,7 +17,7 @@ function initMap() {
     center: new google.maps.LatLng(myLatLng),
     heading: 150,
     tilt: 45,
-    mapId: "15431d2b469f209e", //ここは各自のGoogle Cloud Platformのマップ管理にMap IDの半角英数字のもの
+    mapId: "", //ここは各自のGoogle Cloud Platformのマップ管理にMap IDの半角英数字のもの
     isFractionalZoomEnabled: true,
     // mapTypeId: 'satellite',
     mapTypeId: 'hybrid',
