@@ -22,7 +22,7 @@ function initMap() {
     mapTypeId: "hybrid",
     // mapTypeId: 'terrain',
   };
-  const map = new google.maps.Map(document.getElementById("map"), mapOptions);
+  let map = new google.maps.Map(document.getElementById("map"), mapOptions);
   new google.maps.Marker({
     position: myLatLng,
     map,
