@@ -20,7 +20,7 @@
 .circle-box {
   height: 300px;
   width: 100%;
-  background: #000000;
+  background: #d9d9d9;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,8 +28,8 @@
 
 .circle {
   background: lightcoral;
-  width: 50px;
-  height: 50px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   margin: 10px;
 }
