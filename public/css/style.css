@@ -6,6 +6,15 @@
  * Made By MaterializeCSS.com
  */
 
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-family: 'Sawarabi Mincho', serif;
+}
+
+#nav {
+  background-color: #205151;
+}
+
 .icon-block {
   padding: 0 15px;
 }
@@ -26,10 +35,188 @@
   align-items: center;
 }
 
-.circle {
+.dot-circle {
   background: lightcoral;
   width: 24px;
   height: 24px;
   border-radius: 50%;
   margin: 10px;
+}
+
+.chara-stack-card-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* コンテンツ幅とpaddingは適宜変更 */
+  max-width: 1100px;
+  padding:0 0 0 15px;
+  margin: 0 auto;
+  background-color: #205151; /* 背景色 */
+}
+.chara-stack-card-wrapper > .card-text {
+  width: 30%; /* 全体幅に対するテキスト領域の割合 */
+  display: flex;
+  flex-direction: column;
+  /* align-items: flex-end; */
+}
+.card-text-container {
+  position: relative;
+  font-size: 32px; /* テキストのフォントサイズ */
+  width: 100%;
+  height: 50px; /* テキスト1行あたりの高さ指定 */
+}
+.card-text-dummy::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  color: #205151; /* 重ねた部分の文字色となる */
+  white-space: nowrap; /* テキストの改行禁止 */
+}
+.card-text-dummy.dummy1::before {
+  content: "絶景九州について";/* 重ねる対象のテキスト入力 */
+}
+.card-text-dummy.dummy2::before {
+  content: "Zekkei";/* 重ねる対象のテキスト入力 */
+}
+
+.card-text-main {
+  position: relative;
+  z-index: 3;
+  display: block;
+  overflow: hidden;/* この指定ではみ出した元テキストを非表示化 */
+  width: 100%;
+  height: 100%;
+}
+.card-text-main-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: white; /* 重ならない部分のテキスト色 */
+  white-space: nowrap; /* テキストの改行禁止 */
+}
+.card-img-bg {
+  position: relative;
+  z-index: 1;
+  width: 70%;
+  /* height: 600px;画像高さは適宜変更 */
+  /* background-color: #000; */
+  /* background: url(*); 背景画像のURL*を指定 */
+  background-size: cover;
+  background-position: center;
+}
+/* @media(max-width: 768px) {
+	.content_wrapper {
+		display: block;
+	}
+	.text,
+	.bg {
+		width: 100%;
+	}
+	.text-dummy {
+		display: none;
+	}
+	.text-main_inner {
+		white-space: normal;
+	}
+} */
+
+/**
+  * スライドイン項目
+  */
+  .ipsType_right {
+    text-align: right;
+  }
+  .ipsType_center {
+    text-align: center;
+  }
+  .cInnerContent {
+    max-width: 1240px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .ipsSpacer_bottom_double {
+    margin-bottom: 30px;
+  }
+  .ipsGrid {
+    display: inline-block;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .ipsGrid::before, .ipsGrid::after {
+    display: table;
+    content: "";
+    line-height: 0;
+  }
+  .ipsGrid > [class*="ipsGrid_span"] {
+    display: block;
+    width: 100%;
+    min-height: 30px;
+    box-sizing: border-box;
+  }
+  .ipsGrid > .ipsGrid_span5 {
+    width: 40.42553191489362%;
+  }
+  .ipsGrid > .ipsGrid_span7 {
+    width: 57.44680851063829%;
+  }
+  .ipsGrid > [class*="ipsGrid_span"] {
+    float: left;
+    margin-left: 2%;
+  }
+  .ipsGrid > [class*="ipsGrid_span"]:first-child {
+    margin-left: 0;
+  }
+  .feature {
+    display: flex;
+    align-items: center;
+  }
+  .card {
+    margin-bottom: 30px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #ffffff;
+    box-shadow: 1px 1px 5px 1px #CCCCCC;
+  /*   transition: 0.3s; */
+  }
+  .featured-image-container .card {
+    padding: 10px;
+    height: 100%;
+    /* height: 0; */
+    /* padding-bottom: calc(100% - 10px); */
+  }
+  h2.heading_large {
+    font-size: 1.8em;
+  }
+  img {
+    max-width: 100%;
+  }
+  
+  .header-section {
+    margin: 200px auto;
+  }
+  
+  .gs_reveal {
+    opacity: 0;
+    visibility: hidden;
+    will-change: transform, opacity;
+  }
+
+#footer {
+  background-color: #205151;
+}
+
+
+/**
+ * アップロード画面
+ **/
+.dz-progress {
+  display: none;
+}
+
+#uploadBtn {
+  margin: 2em;
 }

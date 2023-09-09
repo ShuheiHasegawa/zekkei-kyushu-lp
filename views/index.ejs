@@ -1,315 +1,349 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1.0"
-    />
-    <title>絶景九州</title>
 
-    <!-- CSS  -->
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link
-      href="../public/css/materialize.css"
-      type="text/css"
-      rel="stylesheet"
-      media="screen,projection"
-    />
-    <link
-      href="../public/css/style.css"
-      type="text/css"
-      rel="stylesheet"
-      media="screen,projection"
-    />
-    <script type="importmap">
-			{
-				"imports": {
-					"three": "../public/js/three/three.module.js",
-          "GLTFLoader": "../public/js/three/jsm/loaders/GLTFLoader.js"
-        }
-			}
-		</script>
-  </head>
-  <body>
-    <input type="hidden" id="mapId" value="<%= mapId %>">
-    <nav>
-      <div class="nav-wrapper">
-        <a href="#!" class="brand-logo">
-            <img src="../public/img/logo/logo.jpg" height="80" />
-        </a>
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger"
-          ><i class="material-icons">menu</i></a
-        >
-        <ul class="right hide-on-med-and-down">
-          <!-- <li><a href="sass.html">Sass</a></li>
-          <li><a href="badges.html">Components</a></li>
-          <li><a href="collapsible.html">Javascript</a></li>
-          <li><a href="mobile.html">Mobile</a></li> -->
-          <li>
-            <a
-              href="#"
-              data-target="slide-out"
-              class="sidenav-trigger"
-              style="display: block"
-            >
-              <i class="material-icons">menu</i>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+  <title>絶景九州</title>
+  <%- include('common') %>
+</head>
 
-    <ul class="sidenav" id="mobile-demo">
-      <li><a href="./index.html"> ホーム </a></li>
-      <li onclick="menuClick('about')">
-        <a href="#about"> 絶景九州について </a>
-      </li>
-      <li onclick="menuClick('post')"><a href="#!"> 写真を投稿する </a></li>
-      <li onclick="menuClick('watch')"><a href="#!"> 写真を見る </a></li>
-      <li onclick="menuClick('commercial')">
-        <a href="#!"> 商業利用について </a>
-      </li>
-    </ul>
+<body>
+  <input type="hidden" id="mapId" value="<%= mapId %>" />
 
-    <ul id="slide-out" class="sidenav">
-      <li>
-        <div class="user-view">
-          <!-- <div class="background">
+  <%- include('topNav') %>
+
+  <ul id="slideOutMobile" class="sidenav">
+    <li><a href="./index.html"> ホーム </a></li>
+    <li onclick="menuClick('about')">
+      <a href="#about"> 絶景九州について </a>
+    </li>
+    <li onclick="menuClick('post')"><a href="#!"> 写真を投稿する </a></li>
+    <li onclick="menuClick('watch')"><a href="#!"> 写真を見る </a></li>
+    <li onclick="menuClick('commercial')">
+      <a href="#!"> 商業利用について </a>
+    </li>
+  </ul>
+
+  <ul id="slide-out" class="sidenav">
+    <li>
+      <div class="user-view">
+        <!-- <div class="background">
             <img src="img/logo/logo.png" />
           </div> -->
-          <a href="#user"><img class="circle" src="../public/img/logo/logo.jpg" /></a>
-        </div>
-      </li>
-      <li><a href="./index.html"> ホーム </a></li>
-      <li onclick="menuClick('about')">
-        <a href="#about"> 絶景九州について </a>
-      </li>
-      <li onclick="menuClick('post')"><a href="#!"> 写真を投稿する </a></li>
-      <li onclick="menuClick('watch')"><a href="#!"> 写真を見る </a></li>
-      <li onclick="menuClick('commercial')">
-        <a href="#!"> 商業利用について </a>
-      </li>
-      <li>
-        <a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a>
-      </li>
-      <li><a href="#!">Second Link</a></li>
-      <li><div class="divider"></div></li>
-      <li><a class="subheader">Subheader</a></li>
-      <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
-    </ul>
+        <a href="#user"><img class="circle" src="../public/img/logo/logo.jpg" /></a>
+      </div>
+    </li>
+    <li><a href="./index.html"> ホーム </a></li>
+    <li onclick="menuClick('about')">
+      <a href="#about"> 絶景九州について </a>
+    </li>
+    <li onclick="menuClick('post')"><a href="#!"> 写真を投稿する </a></li>
+    <li onclick="menuClick('watch')"><a href="#!"> 写真を見る </a></li>
+    <li onclick="menuClick('commercial')">
+      <a href="#!"> 商業利用について </a>
+    </li>
+    <li>
+      <a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a>
+    </li>
+    <li><a href="#!">Second Link</a></li>
+    <li>
+      <div class="divider"></div>
+    </li>
+    <li><a class="subheader">Subheader</a></li>
+    <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+  </ul>
 
-    <div class="section no-pad-bot" id="index-banner">
+  <div class="row" style="height: 80vh; background-color: gainsboro">
+    <div id="map" class="center"></div>
+  </div>
+
+  <div class="cInnerContent">
+    <h1 class="header-section gs_reveal ipsType_center">絶景九州</h1>
+
+    <div class="features">
+
+      <div class="feature ipsSpacer_bottom_double ipsGrid ipsGrid_collapsePhone">
+        <div class="featured-image-container ipsGrid_span5 gs_reveal gs_reveal_fromLeft">
+          <div class="card">
+            <img width="479" src="https://source.unsplash.com/random/" alt="">
+          </div>
+        </div>
+
+        <div class="ipsGrid_span7 ipsType_left">
+          <h2 class="heading_large gs_reveal">絶景九州について</h2>
+          <p class="gs_reveal"><a href="https://greensock.com/drawsvg/">DrawSVGPlugin</a> allows you to progressively reveal (or hide) SVG strokes to make them look like they're being drawn. <a href="https://greensock.com/morphsvg/">MorphSVGPlugin</a> to Morph any SVG shape into any other shape smoothly regardless of the number of points in each. <a href="/docs/v3/Plugins/MotionPathPlugin">MotionPathPlugin</a> allows you to easily move any object along a path.</p>
+        </div>
+      </div>
+
+      <div class="feature ipsSpacer_bottom_double ipsGrid ipsGrid_collapsePhone">
+        <div class="ipsGrid_span7 ipsType_right">
+          <h2 class="heading_large gs_reveal">写真を投稿する</h2>
+          <p class="gs_reveal">GreenSock is used in some of the most popular <a href="//threejs.org/">Three.js</a> powered WebGL projects. Animate any object in a scene. <a href="https://greensock.com/PixiPlugin/">PixiPlugin</a> makes animating <a href="//www.pixijs.com/">Pixi.js</a> objects with GSAP a breeze. Animate position, scale, color effects and more with all the power and control of GSAP and the rendering speed of Pixi.js.</p>
+        </div>
+
+        <div class="featured-image-container ipsGrid_span5 gs_reveal gs_reveal_fromRight">
+          <div class="card">
+            <img width="479" src="https://source.unsplash.com/random/" alt="">
+          </div>
+        </div>
+      </div>
+
+      <div class="feature ipsSpacer_bottom_double ipsGrid ipsGrid_collapsePhone">
+        <div class="featured-image-container ipsGrid_span5 gs_reveal gs_reveal_fromLeft">
+          <div class="card">
+            <img width="479" src="https://source.unsplash.com/random/" alt="">
+          </div>
+        </div>
+
+        <div class="ipsGrid_span7 ipsType_left">
+          <h2 class="heading_large gs_reveal">写真を見る</h2>
+          <p class="gs_reveal">GSAP makes animating with Canvas even easier by providing an easier way to look and sequence animations. GSAP works great with <a href="//www.adobe.com/products/animate.html">Adobe Animate</a> and <a href="//createjs.com/easeljs">EaseJS</a> through GSAP's <a href="https://greensock.com/easelplugin/">EaselJSPlugin</a>.</p>
+        </div>
+      </div>
+
+      <div class="feature ipsSpacer_bottom_double ipsGrid ipsGrid_collapsePhone">
+        <div class="ipsGrid_span7 ipsType_right">
+          <h2 class="heading_large gs_reveal">商業利用について</h2>
+          <p class="gs_reveal">GSAP is used on over 8,500,000 sites and over 1,000 sites featured on <a href="https://www.awwwards.com/websites/gsap-animation/" target="_blank">Awwwards</a>. For some of our favorites, check out <a href="https://greensock.com/showcase/">our showcase</a>.</p>
+        </div>
+
+        <div class="featured-image-container ipsGrid_span5 gs_reveal gs_reveal_fromRight">
+          <div class="card">
+            <img width="479" src="https://source.unsplash.com/random/" alt="">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="section">
+      <div class="row">
+        <div class="col s6 m6">
+          <div class="chara-stack-card-wrapper">
+            <div class="card-text">
+              <div class="card-text-container">
+                <span class="card-text-dummy dummy1"></span>
+                <span class="card-text-main">
+                  <span class="card-text-main-inner">絶景九州について</span>
+                </span>
+              </div>
+              <div class="card-text-container">
+                <span class="card-text-dummy dummy2"></span>
+                <span class="card-text-main">
+                  <span class="card-text-main-inner">Zekkei</span>
+                </span>
+              </div>
+            </div>
+            <img src="https://source.unsplash.com/random/" class="card-img-bg">
+          </div>
+        </div>
+        <div class="col s6 m6">
+          <p>絶景九州について</p>
+          <p>絶景九州について</p>
+          <p>絶景九州について</p>
+          <p>絶景九州について</p>
+          <p>絶景九州について</p>
+          <p>絶景九州について</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="section">
+      <div class="row">
+        <div class="col s12 m12">
+          <div class="circle-box">
+            <div class="dot-circle"></div>
+            <div class="dot-circle"></div>
+            <div class="dot-circle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="section">
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text">
+              <i class="material-icons">flash_on</i>
+            </h2>
+            <h5 class="center">Speeds up development</h5>
+
+            <p class="light">
+              We did most of the heavy lifting for you to provide a default
+              stylings that incorporate our custom components. Additionally,
+              we refined animations and transitions to provide a smoother
+              experience for developers.
+            </p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text">
+              <i class="material-icons">group</i>
+            </h2>
+            <h5 class="center">User Experience Focused</h5>
+
+            <p class="light">
+              By utilizing elements and principles of Material Design, we
+              were able to create a framework that incorporates components
+              and animations that provide more feedback to users.
+              Additionally, a single underlying responsive system across all
+              platforms allow for a more unified user experience.
+            </p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text">
+              <i class="material-icons">settings</i>
+            </h2>
+            <h5 class="center">Easy to work with</h5>
+
+            <p class="light">
+              We have provided detailed documentation as well as specific
+              code examples to help new users get started. We are also
+              always open to feedback and can answer any questions a user
+              may have about Materialize.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="facebook" class="section">
       <div class="container">
-        <div class="section">
-          <div class="row" style="height: 80vh; background-color: gainsboro;">
-            <div id="map" class="center">
-            </div>
-          </div>
-        </div>
-    </div>
-
-    <div class="container">
-      <div class="section">
-        <div class="row">
-          <div class="col s12 m12">
-            <div class="circle-box">
-              <div class="circle"></div>
-              <div class="circle"></div>
-              <div class="circle"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="section">
-        <div class="row">
-          <div class="col s12 m4">
-            <div class="icon-block">
-              <h2 class="center light-blue-text">
-                <i class="material-icons">flash_on</i>
-              </h2>
-              <h5 class="center">Speeds up development</h5>
-
-              <p class="light">
-                We did most of the heavy lifting for you to provide a default
-                stylings that incorporate our custom components. Additionally,
-                we refined animations and transitions to provide a smoother
-                experience for developers.
-              </p>
-            </div>
-          </div>
-
-          <div class="col s12 m4">
-            <div class="icon-block">
-              <h2 class="center light-blue-text">
-                <i class="material-icons">group</i>
-              </h2>
-              <h5 class="center">User Experience Focused</h5>
-
-              <p class="light">
-                By utilizing elements and principles of Material Design, we were
-                able to create a framework that incorporates components and
-                animations that provide more feedback to users. Additionally, a
-                single underlying responsive system across all platforms allow
-                for a more unified user experience.
-              </p>
-            </div>
-          </div>
-
-          <div class="col s12 m4">
-            <div class="icon-block">
-              <h2 class="center light-blue-text">
-                <i class="material-icons">settings</i>
-              </h2>
-              <h5 class="center">Easy to work with</h5>
-
-              <p class="light">
-                We have provided detailed documentation as well as specific code
-                examples to help new users get started. We are also always open
-                to feedback and can answer any questions a user may have about
-                Materialize.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div id="facebook" class="section">
-        <div class="container">
-          <div class="row center">
-            <!-- <iframe
+        <div class="row center">
+          <!-- <iframe
               src="https://www.facebook.com/groups/zekkei.kyushu.group/"
               width="100%"
               height="400"
             ></iframe> -->
-          </div>
         </div>
       </div>
-
-      <div id="about" class="section">
-        <div class="container">
-          <br /><br />
-          <div class="row center">
-            <h5 class="header col s12 light">絶景九州について</h5>
-          </div>
-          <blockquote>
-            <p class="flow-text">
-              One common flaw we've seen in many frameworks is a lack of support for truly responsive text. While elements on the page resize fluidly, text still resizes on a fixed basis. To ameliorate this problem, for text heavy pages, we've created a class that fluidly scales text size and line-height to optimize readability for the user. Line length stays between 45-80 characters and line height scales to be larger on smaller screens.
-              To see Flow Text in action, slowly resize your browser and watch the size of this text body change! Use the button above to toggle off/on flow-text to see the difference!
-            </p>
-          </blockquote>
-        </div>
-      </div>
-
-      <div id="post" class="section">
-        <div class="container">
-          <br /><br />
-          <div class="row center">
-            <h5 class="header col s12 light">写真を投稿する</h5>
-          </div>
-          <blockquote>
-            <p class="flow-text">
-              One common flaw we've seen in many frameworks is a lack of support for truly responsive text. While elements on the page resize fluidly, text still resizes on a fixed basis. To ameliorate this problem, for text heavy pages, we've created a class that fluidly scales text size and line-height to optimize readability for the user. Line length stays between 45-80 characters and line height scales to be larger on smaller screens.
-              To see Flow Text in action, slowly resize your browser and watch the size of this text body change! Use the button above to toggle off/on flow-text to see the difference!
-            </p>
-          </blockquote>
-          <div class="row center">
-            <a
-              href="/uploads"
-              id="download-button"
-              class="btn-large waves-effect waves-light orange"
-              >写真を投稿する</a
-            >
-          </div>
-        </div>
-      </div>
-
-      <div id="watch" class="section">
-        <div class="container">
-          <br /><br />
-          <div class="row center">
-            <h5 class="header col s12 light">写真を見る</h5>
-          </div>
-          <blockquote>
-            <p class="flow-text">
-              One common flaw we've seen in many frameworks is a lack of support for truly responsive text. While elements on the page resize fluidly, text still resizes on a fixed basis. To ameliorate this problem, for text heavy pages, we've created a class that fluidly scales text size and line-height to optimize readability for the user. Line length stays between 45-80 characters and line height scales to be larger on smaller screens.
-              To see Flow Text in action, slowly resize your browser and watch the size of this text body change! Use the button above to toggle off/on flow-text to see the difference!
-            </p>
-          </blockquote>
-        </div>
-      </div>
-
-      <div id="commercial" class="section">
-        <div class="container">
-          <br /><br />
-          <div class="row center">
-            <h5 class="header col s12 light">商業利用について</h5>
-          </div>
-          <blockquote>
-            <p class="flow-text">
-              One common flaw we've seen in many frameworks is a lack of support for truly responsive text. While elements on the page resize fluidly, text still resizes on a fixed basis. To ameliorate this problem, for text heavy pages, we've created a class that fluidly scales text size and line-height to optimize readability for the user. Line length stays between 45-80 characters and line height scales to be larger on smaller screens.
-              To see Flow Text in action, slowly resize your browser and watch the size of this text body change! Use the button above to toggle off/on flow-text to see the difference!
-            </p>
-          </blockquote>
-        </div>
-        </div>
-      </div>
-
-      <br /><br />
     </div>
 
-    <footer class="page-footer orange">
+    <div id="about" class="section">
       <div class="container">
-        <div class="row">
-          <div class="col l6 s12">
-            <h5 class="white-text">絶景九州</h5>
-            <p class="grey-text text-lighten-4">
-              We are a team of college students working on this project like
-              it's our full time job. Any amount would help support and continue
-              development on this project and is greatly appreciated.
-            </p>
-          </div>
-          <div class="offset-l2 col l3 s12">
-            <h5 class="white-text">メニュー</h5>
-            <ul>
-              <li><a class="white-text" href="#!">絶景九州について</a></li>
-              <li><a class="white-text" href="#!">写真を投稿する</a></li>
-              <li><a class="white-text" href="#!">写真を見る</a></li>
-              <li><a class="white-text" href="#!">商業利用について</a></li>
-            </ul>
-          </div>
-          <!-- <div class="col l3 s12">
-            <h5 class="white-text">Connect</h5>
-            <ul>
-              <li><a class="white-text" href="#!">Link 1</a></li>
-              <li><a class="white-text" href="#!">Link 2</a></li>
-              <li><a class="white-text" href="#!">Link 3</a></li>
-              <li><a class="white-text" href="#!">Link 4</a></li>
-            </ul>
-          </div> -->
+        <br /><br />
+        <div class="row center">
+          <h5 class="header col s12 light">絶景九州について</h5>
+        </div>
+        <blockquote>
+          <p class="flow-text">
+            One common flaw we've seen in many frameworks is a lack of
+            support for truly responsive text. While elements on the page
+            resize fluidly, text still resizes on a fixed basis. To
+            ameliorate this problem, for text heavy pages, we've created a
+            class that fluidly scales text size and line-height to optimize
+            readability for the user. Line length stays between 45-80
+            characters and line height scales to be larger on smaller
+            screens. To see Flow Text in action, slowly resize your browser
+            and watch the size of this text body change! Use the button
+            above to toggle off/on flow-text to see the difference!
+          </p>
+        </blockquote>
+      </div>
+    </div>
+
+    <div id="post" class="section">
+      <div class="container">
+        <br /><br />
+        <div class="row center">
+          <h5 class="header col s12 light">写真を投稿する</h5>
+        </div>
+        <blockquote>
+          <p class="flow-text">
+            One common flaw we've seen in many frameworks is a lack of
+            support for truly responsive text. While elements on the page
+            resize fluidly, text still resizes on a fixed basis. To
+            ameliorate this problem, for text heavy pages, we've created a
+            class that fluidly scales text size and line-height to optimize
+            readability for the user. Line length stays between 45-80
+            characters and line height scales to be larger on smaller
+            screens. To see Flow Text in action, slowly resize your browser
+            and watch the size of this text body change! Use the button
+            above to toggle off/on flow-text to see the difference!
+          </p>
+        </blockquote>
+        <div class="row center">
+          <a href="/uploads" id="download-button" class="btn-large waves-effect waves-light">写真を投稿する</a>
         </div>
       </div>
-      <div class="footer-copyright">
-        <div class="container">
-          Made by
-          <a class="orange-text text-lighten-3" href="http://materializecss.com"
-            >Materialize</a
-          >
+    </div>
+
+    <div id="watch" class="section">
+      <div class="container">
+        <br /><br />
+        <div class="row center">
+          <h5 class="header col s12 light">写真を見る</h5>
+        </div>
+        <blockquote>
+          <p class="flow-text">
+            One common flaw we've seen in many frameworks is a lack of
+            support for truly responsive text. While elements on the page
+            resize fluidly, text still resizes on a fixed basis. To
+            ameliorate this problem, for text heavy pages, we've created a
+            class that fluidly scales text size and line-height to optimize
+            readability for the user. Line length stays between 45-80
+            characters and line height scales to be larger on smaller
+            screens. To see Flow Text in action, slowly resize your browser
+            and watch the size of this text body change! Use the button
+            above to toggle off/on flow-text to see the difference!
+          </p>
+        </blockquote>
+        <div class="row center">
+          <a href="/gallery" id="download-button" class="btn-large waves-effect waves-light">写真を見る</a>
         </div>
       </div>
-    </footer>
-    <!--Scripts-->
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="../public/js/materialize/materialize.js"></script>
-    <script src="../public/js/gsap/minified/gsap.min.js"></script>
-    <script type="module" src="../public/js/init.js" defer></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=<%= mapKey %>&callback=initMap&v=beta" defer></script>
-    <script src="../public/js/animation.js"></script>
-  </body>
+    </div>
+
+    <div id="commercial" class="section">
+      <div class="container">
+        <br /><br />
+        <div class="row center">
+          <h5 class="header col s12 light">商業利用について</h5>
+        </div>
+        <blockquote>
+          <p class="flow-text">
+            One common flaw we've seen in many frameworks is a lack of
+            support for truly responsive text. While elements on the page
+            resize fluidly, text still resizes on a fixed basis. To
+            ameliorate this problem, for text heavy pages, we've created a
+            class that fluidly scales text size and line-height to optimize
+            readability for the user. Line length stays between 45-80
+            characters and line height scales to be larger on smaller
+            screens. To see Flow Text in action, slowly resize your browser
+            and watch the size of this text body change! Use the button
+            above to toggle off/on flow-text to see the difference!
+          </p>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+
+  <br /><br />
+  </div>
+
+  <%- include('loader') %>
+  <%- include('footer') %>
+
+  <!--Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="../public/js/materialize/materialize.js"></script>
+  <script src="../public/js/gsap/minified/gsap.min.js"></script>
+  <script type="module" src="../public/js/init.js" defer></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= mapKey %>&callback=initMap&v=beta" defer></script>
+  <script src="../public/js/animation.js"></script>
+</body>
+
 </html>

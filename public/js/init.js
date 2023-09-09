@@ -7,6 +7,7 @@ import {
   WebGLRenderer,
 } from "three";
 import { GLTFLoader } from "GLTFLoader";
+import { ScrollTrigger } from "ScrollTrigger";
 
 function menuClick(elmName) {
   window.location.hash = elmName;
@@ -22,7 +23,7 @@ const defaultLatLng = { lat: 32.9519, lng: 131.1209 };
 const mapOptions = {
   tilt: 0,
   heading: 0,
-  zoom: 18,
+  zoom: 8,
   center: defaultLatLng,
   mapId: $("#mapId").val(),
   // disable interactions due to animation loop and moveCamera
@@ -107,10 +108,12 @@ function initWebglOverlayView(map) {
         // Rotate the map 360 degrees.
         if (mapOptions.tilt < 67.5) {
           mapOptions.tilt += 0.5;
-        } else if (mapOptions.heading <= 360) {
+        // } else if (mapOptions.heading <= 360) {
+        } else if (mapOptions.heading <= 100) {
           mapOptions.heading += 0.2;
-          mapOptions.zoom += 0.005;
+          mapOptions.zoom += 0.025;
         } else {
+          // アニメーション終了
           renderer.setAnimationLoop(null);
         }
       });
@@ -138,7 +141,9 @@ function initWebglOverlayView(map) {
 
 (function ($) {
   $(function () {
-    $(".sidenav").sidenav();
+    $(".sidenav").sidenav({
+      edge: "right",
+    });
   }); // end of document ready
 
   window.addEventListener(
