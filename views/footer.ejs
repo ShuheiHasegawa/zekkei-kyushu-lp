@@ -1,0 +1,49 @@
+<footer id="footer" class="page-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text">絶景九州</h5>
+        <p class="grey-text text-lighten-4">
+          We are a team of college students working on this project like it's
+          our full time job. Any amount would help support and continue
+          development on this project and is greatly appreciated.
+        </p>
+      </div>
+      <div class="offset-l2 col l3 s12">
+        <h5 class="white-text">メニュー</h5>
+        <ul>
+          <li onclick="menuClick('about')">
+            <a class="white-text">絶景九州について</a>
+          </li>
+          <li onclick="menuClick('post')">
+            <a class="white-text">写真を投稿する</a>
+          </li>
+          <li onclick="menuClick('watch')">
+            <a class="white-text">写真を見る</a>
+          </li>
+          <li onclick="menuClick('commercial')">
+            <a class="white-text">商業利用について</a>
+          </li>
+        </ul>
+      </div>
+      <!-- <div class="col l3 s12">
+            <h5 class="white-text">Connect</h5>
+            <ul>
+              <li><a class="white-text" href="#!">Link 1</a></li>
+              <li><a class="white-text" href="#!">Link 2</a></li>
+              <li><a class="white-text" href="#!">Link 3</a></li>
+              <li><a class="white-text" href="#!">Link 4</a></li>
+            </ul>
+          </div> -->
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">© 絶景九州</div>
+  </div>
+  <script>
+    function menuClick(elmName) {
+      window.location.hash = elmName;
+      $(".sidenav-overlay").click();
+    }
+  </script>
+</footer>
