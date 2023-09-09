@@ -7,55 +7,18 @@
       content="width=device-width, initial-scale=1, maximum-scale=1.0"
     />
     <title>絶景九州</title>
+    <%- include('common') %>
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+    <script>Dropzone.autoDiscover = false;</script>
 
-    <!-- CSS  -->
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link
-      href="../public/css/materialize.css"
-      type="text/css"
-      rel="stylesheet"
-      media="screen,projection"
-    />
-    <link
-      href="../public/css/style.css"
-      type="text/css"
-      rel="stylesheet"
-      media="screen,projection"
-    />
   </head>
   <body>
     <input type="hidden" id="mapId" value="<%= mapId %>">
-    <nav>
-      <div class="nav-wrapper">
-        <a href="#!" class="brand-logo">
-            <img src="../public/img/logo/logo.jpg" height="80" />
-        </a>
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger"
-          ><i class="material-icons">menu</i></a
-        >
-        <ul class="right hide-on-med-and-down">
-          <!-- <li><a href="sass.html">Sass</a></li>
-          <li><a href="badges.html">Components</a></li>
-          <li><a href="collapsible.html">Javascript</a></li>
-          <li><a href="mobile.html">Mobile</a></li> -->
-          <li>
-            <a
-              href="#"
-              data-target="slide-out"
-              class="sidenav-trigger"
-              style="display: block"
-            >
-              <i class="material-icons">menu</i>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
 
-    <ul class="sidenav" id="mobile-demo">
+    <%- include('topNav') %>
+
+    <ul id="slideOutMobile" class="sidenav">
       <li><a href="./index.html"> ホーム </a></li>
       <li onclick="menuClick('about')">
         <a href="#about"> 絶景九州について </a>
@@ -94,73 +57,36 @@
       <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
     </ul>
 
-    <div class="section no-pad-bot" id="index-banner">
+    <div class="section no-pad-bot">
     <div class="container">
-
-      <div id="post" class="section" style="padding-bottom: 25vh;">
+      <div id="post" class="section">
         <div class="container">
           <br /><br />
           <div class="row center">
             <h5 class="header col s12 light">写真を投稿する</h5>
           </div>
           <div class="row center">
-            <form action="/uploads" method="post" enctype="multipart/form-data">
-              <div class="input-group">
-                  <input type="file" id="uploadFiles" accept=".jpg" multiple class="form-control">
-                  <button type="button" class="btn btn-primary" onclick="sendFiles();">アップロード</button>
-              </div>
-            </form>
+            <form action="/uploads" id="uploadFiles" class="dropzone" enctype="multipart/form-data"></form>
+            <button type="button" id="uploadBtn" class="btn btn-primary" onclick="sendFiles();">アップロード</button>
           </div>
         </div>
       </div>
-
     </div>
 
-    <footer class="page-footer orange">
-      <div class="container">
-        <div class="row">
-          <div class="col l6 s12">
-            <h5 class="white-text">絶景九州</h5>
-            <p class="grey-text text-lighten-4">
-              We are a team of college students working on this project like
-              it's our full time job. Any amount would help support and continue
-              development on this project and is greatly appreciated.
-            </p>
-          </div>
-          <div class="offset-l2 col l3 s12">
-            <h5 class="white-text">メニュー</h5>
-            <ul>
-              <li><a class="white-text" href="#!">絶景九州について</a></li>
-              <li><a class="white-text" href="#!">写真を投稿する</a></li>
-              <li><a class="white-text" href="#!">写真を見る</a></li>
-              <li><a class="white-text" href="#!">商業利用について</a></li>
-            </ul>
-          </div>
-          <!-- <div class="col l3 s12">
-            <h5 class="white-text">Connect</h5>
-            <ul>
-              <li><a class="white-text" href="#!">Link 1</a></li>
-              <li><a class="white-text" href="#!">Link 2</a></li>
-              <li><a class="white-text" href="#!">Link 3</a></li>
-              <li><a class="white-text" href="#!">Link 4</a></li>
-            </ul>
-          </div> -->
-        </div>
-      </div>
-      <div class="footer-copyright">
-        <div class="container">
-          Made by
-          <a class="orange-text text-lighten-3" href="http://materializecss.com"
-            >Materialize</a
-          >
-        </div>
-      </div>
-    </footer>
+    <div class="container">
+      <% // records.forEach(function (record, key) { %>
+        <img src="<%= // record.url %>" alt="image" style="height: 480px; width: auto;">
+      <% // }); %>
+    </div>
+
+    <div style="position: fixed; bottom: 0;">
+      <%- include('footer') %>
+    </div>
+
     <!--Scripts-->
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="../public/js/materialize/materialize.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=<%= mapKey %>&callback=initMap&v=beta" defer></script>
-    <script src="../public/js/gsap/minified/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/exif-js"></script>
     <script src="../public/js/uploads.js"></script>
   </body>
 </html>
