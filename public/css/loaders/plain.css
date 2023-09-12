@@ -9,6 +9,7 @@
   animation: splash 3s ease-in;
   animation-fill-mode: forwards;
   -webkit-animation-fill-mode: forwards;
+  opacity: 0.75;
 }
 
 #loader {
