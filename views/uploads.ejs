@@ -14,6 +14,9 @@
 
   </head>
   <body>
+    <div id="loader-wrapper">
+      <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
     <input type="hidden" id="mapId" value="<%= mapId %>">
 
     <%- include('topNav') %>
@@ -74,9 +77,9 @@
     </div>
 
     <div class="container">
-      <% // records.forEach(function (record, key) { %>
-        <img src="<%= // record.url %>" alt="image" style="height: 480px; width: auto;">
-      <% // }); %>
+      <% records.forEach(function (record, key) { %>
+        <img src="<%= record.url %>" alt="image" style="height: 480px; width: auto;">
+      <% }); %>
     </div>
 
     <div style="position: fixed; bottom: 0;">

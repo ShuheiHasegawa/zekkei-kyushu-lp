@@ -150,6 +150,18 @@ function initWebglOverlayView(map) {
     "DOMContentLoaded",
     () => {
       initMap();
+
+      // Facebookグループの投稿を取得
+      // FB.api(
+      //   "/1580012108763267/feed?access_token=EAAI8KpZBqYnwBO2xBRR2E5pDxwiQAZA8U7sofTdjSFtSz0ZCgZBkL5WSHZAKwnqivQS2xhp01RQvOADYZA4tptLbVrTp2IIiZA8laQEknNn7QCSlFfSjsDeOaNYTBZBwl6GAFDFFKqv8OAVIRglwZAcfH49AP0UEL24b9NBt80CpMalZBJF46GZBYIE25YR",
+      //   function (res) {
+      //     if (res && !res.error) {
+      //       /* handle the result */
+      //     }
+      //     console.log(res)
+      //   }
+      // );
+
     },
     false
   );

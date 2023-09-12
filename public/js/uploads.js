@@ -1,5 +1,14 @@
 let droppedImages = [];
 let exifList = [];
+const $loaderWrapper = $("#loader-wrapper");
+
+function isLoading(isLoading) {
+  if (isLoading) {
+    $loaderWrapper.css("visibility", "visible");
+  } else {
+    $loaderWrapper.css("visibility", "hidden");
+  }
+}
 
 /**
  * 画像ファイルからExif情報を取得する
@@ -9,7 +18,6 @@ function getExif(file) {
   let exifData = "";
 
   EXIF.getData(file, function () {
-
     // let datetime = EXIF.getTag(this, "DateTimeOriginal"); //dateTimeではだめ。dateTimeOriginal
     // let ss = EXIF.getTag(this, "ExposureTime"); //シャッタースピード
     // let fnumber = EXIF.getTag(this, "FNumber"); //絞り
@@ -23,13 +31,16 @@ function getExif(file) {
     // console.log(EXIF.getAllTags(this));
 
     exifData = EXIF.getAllTags(this);
-    console.log('exifData', exifData);
+    console.log("exifData", exifData);
     exifList.push(JSON.stringify(exifData));
   });
 }
 
 function sendFiles() {
-  if (droppedImages.length === 0 || confirm("アップロードしますか？") === false) return;
+  if (droppedImages.length === 0 || confirm("アップロードしますか？") === false)
+    return;
+
+  isLoading(true);
 
   const formData = new FormData();
 
@@ -51,22 +62,25 @@ function sendFiles() {
     })
     .catch((error) => {
       alert(error);
+    })
+    .finally(() => {
+      isLoading(false);
     });
 }
 
 $(function () {
   Dropzone.autoDiscover = false;
-  let zekkeiKyushuDropzone = new Dropzone(".dropzone", { 
-  url: "/uploads",
-  // parallelUploads: 1,
-  acceptedFiles: '.jpeg, .jpg, .png',
-  maxFiles: 4,
-  maxFilesize: 10,
-  autoProcessQueue: false,
-  addRemoveLinks: true,
-  dictRemoveFile: "削除",
-  // dictDefaultMessage: `オプション設定`,
-});
+  let zekkeiKyushuDropzone = new Dropzone(".dropzone", {
+    url: "/uploads",
+    // parallelUploads: 1,
+    acceptedFiles: ".jpeg, .jpg, .png",
+    maxFiles: 4,
+    maxFilesize: 10,
+    autoProcessQueue: false,
+    addRemoveLinks: true,
+    dictRemoveFile: "削除",
+    // dictDefaultMessage: `オプション設定`,
+  });
   zekkeiKyushuDropzone.on("addedfile", function (file) {
     console.log(file);
     getExif(file);
