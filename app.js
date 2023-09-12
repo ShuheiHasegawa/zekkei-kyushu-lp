@@ -160,6 +160,7 @@ app.get("/", (req, res) => {
  */
 app.get("/uploads", (req, res) => {
 
+  // res.render("uploads", { mapId: env.mapId, mapKey: env.mapKey, records: [] });
   findUploadFiles("1").catch(console.dir).then((records) => {
     res.render("uploads", { mapId: env.mapId, mapKey: env.mapKey, records: records });
   });
@@ -199,6 +200,10 @@ app.post("/uploads", (req, res, next) => {
  */
 app.get("/gallery", (req, res) => {
   res.render("gallery");
+});
+
+app.get("/showcase", (req, res) => {
+  res.render("showcase");
 });
 
 app.listen(3000, () => {

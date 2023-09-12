@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>絶景九州 Gallery</title>
+<link
+  href="../public/css/materialize.css"
+  type="text/css"
+  rel="stylesheet"
+  media="screen,projection"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/css/lightgallery.min.css"
+/>
+<link href="../public/css/showcase.css" type="text/css" rel="stylesheet" />
+</head>
+<main>
+  <body>
+    <nav>
+      <div class="nav-wrapper" style="background-color: #205151;">
+        <div class="col s12" style="padding-left: 2em;">
+          <a href="#!" class="breadcrumb">絶景九州TV2022年4月号</a>
+        </div>
+      </div>
+    </nav>
+    <div class="row" style="padding: 2em">
+      <div id="lightgallery">
+        <a
+          class="col s3"
+          href="../public/img/tv/2022/04/compressed/01 阿蘇狩尾の芝桜18.6MB小嶋幸喜.jpg"
+          data-sub-html=".caption01"
+        >
+          <img
+            src="../public/img/tv/2022/04/compressed/01 阿蘇狩尾の芝桜18.6MB小嶋幸喜.jpg"
+          />
+          <div class="caption01">
+            <h6>阿蘇狩尾の芝桜</h6>
+            <p>小嶋幸喜</p>
+          </div>
+        </a>
+        <a
+          class="col s3"
+          href="../public/img/tv/2022/04/compressed/02 河内藤園3.4MB荒木晴男.jpeg"
+          data-sub-html=".caption02"
+        >
+          <img
+            src="../public/img/tv/2022/04/compressed/02 河内藤園3.4MB荒木晴男.jpeg"
+          />
+          <div class="caption02">
+            <h6>河内藤園</h6>
+            <p>荒木晴男</p>
+          </div>
+        </a>
+        <a
+          class="col s3"
+          href="../public/img/tv/2022/04/compressed/03 響灘緑地グリーンパークの薔薇園2MBT. Katsuda.jpg"
+          data-sub-html=".caption03"
+        >
+          <img
+            src="../public/img/tv/2022/04/compressed/03 響灘緑地グリーンパークの薔薇園2MBT. Katsuda.jpg"
+          />
+          <div class="caption03">
+            <h6>響灘緑地グリーンパークの薔薇園</h6>
+            <p>T.Katsuda</p>
+          </div>
+        </a>
+        <a
+          class="col s3"
+          href="../public/img/tv/2022/04/compressed/04 九重連山のミヤマキリシマ1.3MB石川英子.jpeg"
+          data-sub-html=".caption04"
+        >
+          <img
+            src="../public/img/tv/2022/04/compressed/04 九重連山のミヤマキリシマ1.3MB石川英子.jpeg"
+          />
+          <div class="caption04">
+            <h6>九重連山のミヤマキリシマ</h6>
+            <p>石川英子</p>
+          </div>
+        </a>
+        <a
+          class="col s3"
+          href="../public/img/tv/2022/04/compressed/05 指宿市の芝桜8.5MB西村正見.JPG"
+          data-sub-html=".caption05"
+        >
+          <img
+            src="../public/img/tv/2022/04/compressed/05 指宿市の芝桜8.5MB西村正見.JPG"
+          />
+          <div class="caption05">
+            <h6>指宿市の芝桜</h6>
+            <p>西村正見</p>
+          </div>
+        </a>
+        <a
+          class="col s3"
+          href="../public/img/tv/2022/04/compressed/06 長串山公園25.1MB久野隆史.jpg"
+          data-sub-html=".caption06"
+        >
+          <img
+            src="../public/img/tv/2022/04/compressed/06 長串山公園25.1MB久野隆史.jpg"
+          />
+          <div class="caption06">
+            <h6>長串山公園</h6>
+            <p>久野隆史</p>
+          </div>
+        </a>
+        <a
+          class="col s3"
+          href="../public/img/tv/2022/04/compressed/07 浜野浦の棚田と菜の花2.7MBT. Katsuda.jpg"
+          data-sub-html=".caption07"
+        >
+          <img
+            src="../public/img/tv/2022/04/compressed/07 浜野浦の棚田と菜の花2.7MBT. Katsuda.jpg"
+          />
+          <div class="caption07">
+            <h6>浜野浦の棚田と菜の花</h6>
+            <p>T.Katsuda</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </body>
+</main>
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.4.0/dist/js/lightgallery.min.js"></script>
+<script>
+  const url =
+    "https://zekkei-kyushu.s3.ap-southeast-2.amazonaws.com/facebookGroupData.json";
+  $.getJSON(url, function (json) {
+    if (json.data.length > 0) {
+      $.each(json.data, function (i, item) {
+        console.log(item);
+        // $("main").append(
+        //   '<figure class="rellax"><img src="' +
+        //     item.full_picture +
+        //     '" alt="' +
+        //     // item.message +
+        //     "message" +
+        //     '"/><figcaption class="rellax" data-rellax-speed="1">' +
+        //     // item.message +
+        //     "message" +
+        //     "</figcaption></figure>"
+        // );
+      });
+    }
+  });
+
+  lightGallery(document.getElementById("lightgallery"), {
+    thumbnail: true,
+    animateThumb: false,
+    showThumbByDefault: true,
+  });
+</script>

@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans|Playfair+Display:400,400i,700,700i,900,900i');
+
+* {
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+body {
+  margin: 0;
+  background-color: #eee;
+}
+
+a {
+  color: #373737;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  /* height: 20vh; */
+  /* width: 100%; */
+}
+
+/* p {
+  margin-top: 0;
+  margin-bottom: 2em;
+} */
