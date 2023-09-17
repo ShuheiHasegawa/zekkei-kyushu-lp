@@ -149,7 +149,8 @@ function initWebglOverlayView(map) {
   window.addEventListener(
     "DOMContentLoaded",
     () => {
-      initMap();
+      // 地図機能を一旦無効化
+      // initMap();
 
       // Facebookグループの投稿を取得
       // FB.api(

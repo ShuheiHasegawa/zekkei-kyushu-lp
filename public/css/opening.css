@@ -1,0 +1,58 @@
+#opening-wrapper {
+  width: 100%;
+  height: calc(100vh - 64px);
+  position: absolute;
+  overflow: hidden;
+}
+
+.opening-text-area {
+  width: 100%;
+  height: calc(100vh - 64px);
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+#opening-wrapper h1 {
+  font-size: 2.4em;
+  margin: 0;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+#opening-wrapper h1.opening-title {
+  font-size: 4em;
+}
+
+#opening-wrapper p {
+  font-size: 2em;
+  margin: 0;
+  text-align: center;
+}
+
+.opening-bg {
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  opacity: 0;
+  position: relative;
+}
+
+.opening-text {
+  opacity: 0;
+  transform: translateY(20px);
+  color: #ffffff;
+}
+
+.opening-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.opening-title span {
+  opacity: 0;
+  color: #ffffff;
+}
